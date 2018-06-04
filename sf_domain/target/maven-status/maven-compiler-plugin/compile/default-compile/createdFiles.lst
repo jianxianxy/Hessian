@@ -1,0 +1,3 @@
+com\sfbest\www\domain\entity\User.class
+com\sfbest\www\domain\dao\UserDao.class
+com\sfbest\www\domain\service\HessianService.class

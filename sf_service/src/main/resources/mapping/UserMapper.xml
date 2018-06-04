@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.sfbest.www.domain.dao.UserDao">
+
+    <resultMap id="UserBaseMap" type="com.sfbest.www.domain.entity.User">
+        <id column="id" property="id" jdbcType="BIGINT"/>
+        <result column="user_name" property="userName" jdbcType="VARCHAR"/>
+        <result column="password" property="password" jdbcType="VARCHAR"/>
+        <result column="number" property="number" jdbcType="VARCHAR"/>
+        <result column="role" property="role" jdbcType="INTEGER"/>
+        <result column="email" property="email" jdbcType="VARCHAR"/>
+        <result column="status" property="status" jdbcType="INTEGER"/>
+        <result column="created_at" property="createdAt" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <select id="selectUserById" parameterType="java.lang.Long" resultMap="UserBaseMap">
+        SELECT * FROM user
+        WHERE id = #{userId}
+    </select>
+
+    <select id="getUserPage" parameterType="java.util.Map" resultMap="UserBaseMap">
+        SELECT * FROM user LIMIT #{page},#{limit}
+    </select>
+
+</mapper>
