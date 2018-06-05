@@ -1,5 +1,6 @@
 nbproject/
 logs/
+target/*
 *.log
 .idea/
 .tags
