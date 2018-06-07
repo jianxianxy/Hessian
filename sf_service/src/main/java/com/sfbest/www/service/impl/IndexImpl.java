@@ -5,7 +5,7 @@ import com.caucho.hessian.server.HessianServlet;
 import com.sfbest.www.domain.entity.User;
 import com.sfbest.www.domain.service.HessianService;
 import com.sfbest.www.service.impl.service.UserService;
-import com.sfbest.www.service.redis.RedisClientTemplate;
+import com.sfbest.www.service.util.RedisUtil;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -19,7 +19,7 @@ public class IndexImpl extends HessianServlet implements HessianService {
     public UserService userService;
 
     @Resource
-    public RedisClientTemplate redisClientTemplate;
+    public RedisUtil redisUtil;
 
     @Override
     public String sayHello(String name) {
@@ -44,7 +44,7 @@ public class IndexImpl extends HessianServlet implements HessianService {
         List<User> userList = userService.getUser(pageMap);
         String jsonStr = JSON.toJSONString(userList);
 
-        String ret = redisClientTemplate.get("Jtest");
+        String ret = redisUtil.get("Jtest");
         return ret+":"+jsonStr;
     }
 

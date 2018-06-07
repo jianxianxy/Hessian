@@ -1,6 +1,6 @@
 package com.sfbest.www.service.redis;
 
-import redis.clients.jedis.ShardedJedis;
+import redis.clients.jedis.Jedis;
 
 /**
  * Redis链接资源统一接口
@@ -11,17 +11,17 @@ public interface JedisDataSource {
      * 获取redis客户端实例
      * @return ShardedJedis
      */
-    public ShardedJedis getRedisClient();
+    public Jedis getRedisClient(JedisDataSourceImpl.RedisBunch redisBunch);
 
     /**
      * 回收
-     * @param shardedJedis ShardedJedis
+     * @param Jedis ShardedJedis
      */
-    public void returnResource(ShardedJedis shardedJedis);
+    public void returnResource(Jedis shardedJedis);
 
     /**
      * 回收
-     * @param shardedJedis ShardedJedis
+     * @param Jedis ShardedJedis
      */
-    public void returnResource(ShardedJedis shardedJedis, boolean broken);
+    public void returnResource(Jedis shardedJedis, boolean broken);
 }

@@ -9,8 +9,26 @@
                         http://www.springframework.org/schema/context/spring-context-4.0.xsd
                         http://www.springframework.org/schema/mvc
                         http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd">
+
+    <!-- 加载多个properties文件 -->
+    <bean id="configProperties" class="org.springframework.beans.factory.config.PropertiesFactoryBean">
+        <property name="locations">
+            <list>
+                <value>classpath:spring/jdbc.properties</value>
+                <value>classpath:spring/redis.properties</value>
+            </list>
+        </property>
+        <property name="fileEncoding" value="UTF-8"/>
+    </bean>
+    <bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PreferencesPlaceholderConfigurer">
+        <property name="properties" ref="configProperties"/>
+    </bean>
+
     <!-- Mybatis -->
     <import resource="spring-mybatis.xml" />
+
+    <!-- Redis -->
+    <import resource="spring-redis.xml" />
 
     <!-- 自动扫描  @Controller-->
     <context:component-scan base-package="com.sfbest.www.service"/>

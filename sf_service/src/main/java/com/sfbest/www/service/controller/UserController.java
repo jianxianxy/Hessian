@@ -2,7 +2,7 @@ package com.sfbest.www.service.controller;
 
 import com.sfbest.www.domain.dao.UserDao;
 import com.sfbest.www.domain.entity.User;
-import com.sfbest.www.service.redis.RedisClientTemplate;
+import com.sfbest.www.service.util.RedisUtil;
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -24,7 +24,7 @@ public class UserController {
     @Resource
     public UserDao userDao;
     @Resource
-    public RedisClientTemplate redisClientTemplate;
+    private RedisUtil redisUtil;
 
     @RequestMapping(value = {"","/index"})
     public String index(HttpServletRequest request, Model model){
@@ -34,9 +34,9 @@ public class UserController {
         List<User> userList = userDao.getUserPage(map);
         model.addAttribute("userList",userList);
 
-        redisClientTemplate.set("Jtest","java");
-        String ret = redisClientTemplate.get("Jtest");
-        System.out.println(ret);
+        redisUtil.set("Jtest","java");
+        String ret = redisUtil.get("Jtest");
+        model.addAttribute("Jtest",ret);
         return "index";
     }
 
