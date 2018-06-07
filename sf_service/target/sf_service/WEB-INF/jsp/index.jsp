@@ -20,12 +20,7 @@
         </c:forEach>
     </c:if>
     <hr/>
-    <c:if test="${!empty list}">
-        <c:forEach var="user" items="${list}">
-            姓名：${user.userName} &nbsp;&nbsp;手机号：${user.number}<br>
-        </c:forEach>
-    </c:if>
-    
+
     Redis: Jtest = ${Jtest}
 </body>
 </html>

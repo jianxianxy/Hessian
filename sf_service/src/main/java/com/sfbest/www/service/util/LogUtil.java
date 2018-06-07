@@ -14,7 +14,6 @@ public class LogUtil {
 
     public enum LoggerName{
 
-        ACTIVITY("activity"),
         REDIS("redis");
 
         private String name;
