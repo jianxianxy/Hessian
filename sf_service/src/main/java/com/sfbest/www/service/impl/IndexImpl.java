@@ -17,7 +17,6 @@ public class IndexImpl extends HessianServlet implements HessianService {
 
     @Resource
     public UserService userService;
-
     @Resource
     public RedisUtil redisUtil;
 
@@ -43,8 +42,8 @@ public class IndexImpl extends HessianServlet implements HessianService {
         Map pageMap = (Map)JSON.parse(pageInfo);
         List<User> userList = userService.getUser(pageMap);
         String jsonStr = JSON.toJSONString(userList);
-
         String ret = redisUtil.get("Jtest");
+
         return ret+":"+jsonStr;
     }
 

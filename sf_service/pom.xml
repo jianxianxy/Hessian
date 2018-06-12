@@ -153,6 +153,14 @@
             <version>2.7.3</version>
         </dependency>
         <!-- redis cache related.....end -->
+
+        <!-- 商品搜索 -->
+        <dependency>
+            <groupId>com.sfbest.basic-service.search</groupId>
+            <artifactId>web-search-client</artifactId>
+            <version>1.1.172.feature-ltr2</version>
+        </dependency>
+
     </dependencies>
 
     <build>

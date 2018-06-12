@@ -20,7 +20,16 @@
         </c:forEach>
     </c:if>
     <hr/>
-
     Redis: Jtest = ${Jtest}
+    <hr/>
+    <c:if test="${!empty brandList}">
+        <c:forEach var="brand" items="${brandList}">
+            brandId：${brand.brandId}<br>
+            brandLogo：${brand.brandLogo}<br>
+            brandName：${brand.brandName}<br>
+            brandSort：${brand.brandSort}<br>
+            englistName：${brand.englistName}<br>
+        </c:forEach>
+    </c:if>
 </body>
 </html>
