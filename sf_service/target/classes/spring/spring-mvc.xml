@@ -17,8 +17,8 @@
     <bean id="configProperties" class="org.springframework.beans.factory.config.PropertiesFactoryBean">
         <property name="locations">
             <list>
-                <value>classpath:spring/jdbc.properties</value>
-                <value>classpath:spring/redis.properties</value>
+                <value>classpath:config/test/jdbc.properties</value>
+                <value>classpath:config/test/redis.properties</value>
             </list>
         </property>
         <property name="fileEncoding" value="UTF-8"/>

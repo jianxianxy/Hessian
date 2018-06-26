@@ -14,7 +14,8 @@ public class LogUtil {
 
     public enum LoggerName{
 
-        REDIS("redis");
+        REDIS("redis"),
+        HESSIAN("hessian");
 
         private String name;
 

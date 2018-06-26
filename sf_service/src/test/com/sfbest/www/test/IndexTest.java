@@ -15,11 +15,13 @@ public class IndexTest {
 
             HessianProxyFactory factory = new HessianProxyFactory();
             final HessianService commonService = (HessianService) factory.create(HessianService.class, url);
+            System.out.printf(commonService.sayHello("Kylin"));
+            /*
             Map<String,Integer> map = new HashMap<>();
             map.put("page",0);
             map.put("limit",3);
             System.out.printf(commonService.getUserByPage(JSON.toJSONString(map)));
-
+            */
         } catch (Exception e) {
             e.printStackTrace();
         }
