@@ -19,6 +19,7 @@
             <list>
                 <value>classpath:config/test/jdbc.properties</value>
                 <value>classpath:config/test/redis.properties</value>
+                <value>classpath:config/test/service.properties</value>
             </list>
         </property>
         <property name="fileEncoding" value="UTF-8"/>
@@ -52,12 +53,12 @@
 
     <!-- search服务 -->
     <bean id="searcher" class="org.springframework.remoting.caucho.HessianProxyFactoryBean">
-        <property name="serviceUrl" value="http://10.102.4.32:8081/search/remoteSearcher.hessian" />
+        <property name="serviceUrl" value="${web_search_url}/search/remoteSearcher.hessian" />
         <property name="serviceInterface" value="com.sf.search.remote.HessianSearcher" />
         <property name="readTimeout" value="5000" />
     </bean>
     <bean id="articleSearcher" class="org.springframework.remoting.caucho.HessianProxyFactoryBean">
-        <property name="serviceUrl" value="http://10.102.4.32:8081/search/articleRemoteSearcher.hessian" />
+        <property name="serviceUrl" value="${web_search_url}/search/articleRemoteSearcher.hessian" />
         <property name="serviceInterface" value="com.sf.search.remote.ArticleHessianSearcher" />
         <property name="readTimeout" value="5000" />
     </bean>
