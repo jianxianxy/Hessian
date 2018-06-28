@@ -15,7 +15,7 @@ public class IndexTest {
 
             HessianProxyFactory factory = new HessianProxyFactory();
             final HessianService commonService = (HessianService) factory.create(HessianService.class, url);
-            System.out.printf(commonService.sayHello("Kylin"));
+            System.out.println(commonService.sayHello("Kylin"));
             /*
             Map<String,Integer> map = new HashMap<>();
             map.put("page",0);

@@ -56,5 +56,10 @@
         <property name="serviceInterface" value="com.sf.search.remote.HessianSearcher" />
         <property name="readTimeout" value="5000" />
     </bean>
+    <bean id="articleSearcher" class="org.springframework.remoting.caucho.HessianProxyFactoryBean">
+        <property name="serviceUrl" value="http://10.102.4.32:8081/search/articleRemoteSearcher.hessian" />
+        <property name="serviceInterface" value="com.sf.search.remote.ArticleHessianSearcher" />
+        <property name="readTimeout" value="5000" />
+    </bean>
 
 </beans>
