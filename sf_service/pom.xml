@@ -154,11 +154,18 @@
         </dependency>
         <!-- redis cache related.....end -->
 
-        <!-- 商品搜索 -->
+        <!-- 商品、文章搜索 -->
         <dependency>
             <groupId>com.sfbest.basic-service.search</groupId>
             <artifactId>web-search-client</artifactId>
             <version>1.1.178.feature-solr664</version>
+        </dependency>
+
+        <!-- 商品评论 -->
+        <dependency>
+            <groupId>com.sfbest.basic-service.comment</groupId>
+            <artifactId>comment-service-client</artifactId>
+            <version>1.0.52.release-V-20180612-P</version>
         </dependency>
 
     </dependencies>

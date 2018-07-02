@@ -6,6 +6,7 @@ import com.sf.search.remote.ArticleHessianSearcher;
 import com.sfbest.www.domain.entity.User;
 import com.sfbest.www.domain.service.HessianService;
 import com.sfbest.www.service.impl.service.ArticleSearchService;
+import com.sfbest.www.service.impl.service.CommentService;
 import com.sfbest.www.service.impl.service.SearchService;
 import com.sfbest.www.service.impl.service.UserService;
 import com.sfbest.www.service.util.RedisUtil;
@@ -26,14 +27,27 @@ public class IndexImpl extends HessianServlet implements HessianService {
     public RedisUtil redisUtil;
 
     @Resource
-    ArticleSearchService articlesearchService;
+    CommentService commentService;
 
     @Override
     public String sayHello(String name) {
 
+        Map map0 = new HashMap();
+        map0.put("name","productId");
+        map0.put("value",202008);
+        Map map1 = new HashMap();
+        map1.put("name","selected");
+        map1.put("value",0);
+
+        ArrayList search = new ArrayList();
+        search.add(map0);
+        search.add(map1);
+
         Map cond = new HashMap();
-        cond.put("q","酒");
-        String jsonStr = JSON.toJSONString(articlesearchService.getSuggest(cond));
+        cond.put("page",0);
+        cond.put("pageSize",3);
+        cond.put("searchConditionList",search);
+        String jsonStr = JSON.toJSONString(commentService.getCommentList(cond));
         return "RET:" + jsonStr;
     }
     @Override

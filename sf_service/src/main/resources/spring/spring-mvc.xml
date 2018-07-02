@@ -62,5 +62,16 @@
         <property name="serviceInterface" value="com.sf.search.remote.ArticleHessianSearcher" />
         <property name="readTimeout" value="5000" />
     </bean>
+    <!-- 商品评论服务 -->
+    <bean id="commentPc" class="org.springframework.remoting.caucho.HessianProxyFactoryBean">
+        <property name="serviceUrl" value="${comment_url}/hessian/commentsForPcService" />
+        <property name="serviceInterface" value="com.sfbest.account.comment.api.CommentsForPcService" />
+        <property name="readTimeout" value="5000" />
+    </bean>
+    <bean id="commentProduct" class="org.springframework.remoting.caucho.HessianProxyFactoryBean">
+        <property name="serviceUrl" value="${comment_url}/hessian/commentsForProductService" />
+        <property name="serviceInterface" value="com.sfbest.account.comment.api.CommentsForProductService" />
+        <property name="readTimeout" value="5000" />
+    </bean>
 
 </beans>

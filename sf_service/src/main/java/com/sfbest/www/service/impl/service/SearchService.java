@@ -26,10 +26,9 @@ public class SearchService {
             String str = URLDecoder.decode(searcher.brandByCid(JSON.toJSONString(mapCid)), "UTF-8");
             Map mapType = JSON.parseObject(str,Map.class);
             if(mapType.containsKey("result")){
-                Map brandList = (Map) mapType.get("result");
-                return brandList.get("brandList");
+                return mapType;
             }else{
-                throw new Exception("Not exists key:result");
+                throw new Exception("Not exists key:result [brandByCid]");
             }
         }catch (Exception e){
             LogUtil.getLogger(LogUtil.LoggerName.HESSIAN).error(e.getMessage());
@@ -48,10 +47,9 @@ public class SearchService {
             String str = URLDecoder.decode(searcher.searchBottomList(JSON.toJSONString(mapArea)), "UTF-8");
             Map mapType = JSON.parseObject(str,Map.class);
             if(mapType.containsKey("result")){
-                Map productList = (Map) mapType.get("result");
-                return productList.get("ProductList");
+                return mapType;
             }else{
-                throw new Exception("Not exists key:result");
+                throw new Exception("Not exists key:result [searchBottomList]");
             }
         }catch (Exception e){
             LogUtil.getLogger(LogUtil.LoggerName.HESSIAN).error(e.getMessage());
@@ -75,10 +73,9 @@ public class SearchService {
             String str = URLDecoder.decode(searcher.searchProductList(JSON.toJSONString(mapParam)), "UTF-8");
             Map mapType = JSON.parseObject(str,Map.class);
             if(mapType.containsKey("result")){
-                Map brandList = (Map) mapType.get("result");
-                return brandList.get("ProductList");
+                return mapType;
             }else{
-                throw new Exception("Not exists key:result");
+                throw new Exception("Not exists key:result [searchProductList]");
             }
         }catch (Exception e){
             LogUtil.getLogger(LogUtil.LoggerName.HESSIAN).error(e.getMessage());
@@ -96,9 +93,9 @@ public class SearchService {
             String str = URLDecoder.decode(searcher.suggest(JSON.toJSONString(mapArea)), "UTF-8");
             Map mapType = JSON.parseObject(str,Map.class);
             if(mapType.containsKey("suggestion")){
-                return mapType.get("suggestion");
+                return mapType;
             }else{
-                throw new Exception("Not exists key:result");
+                throw new Exception("Not exists key:result [suggest]");
             }
         }catch (Exception e){
             LogUtil.getLogger(LogUtil.LoggerName.HESSIAN).error(e.getMessage());
@@ -148,7 +145,11 @@ public class SearchService {
         try{
             String str = URLDecoder.decode(searcher.search(JSON.toJSONString(conditions)), "UTF-8");
             Map mapType = JSON.parseObject(str,Map.class);
-            return mapType;
+            if(mapType.containsKey("result")){
+                return mapType;
+            }else{
+                throw new Exception("Not exists key:result [search]");
+            }
         }catch (Exception e){
             LogUtil.getLogger(LogUtil.LoggerName.HESSIAN).error(e.getMessage());
             return null;
