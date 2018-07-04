@@ -73,5 +73,20 @@
         <property name="serviceInterface" value="com.sfbest.account.comment.api.CommentsForProductService" />
         <property name="readTimeout" value="5000" />
     </bean>
-
+    <!-- 用户信息 -->
+    <bean id="userApi" class="org.springframework.remoting.caucho.HessianProxyFactoryBean">
+        <property name="serviceUrl" value="${user_api_url}/hessian/userService" />
+        <property name="serviceInterface" value="com.sfbest.account.api.user.UserService" />
+        <property name="readTimeout" value="5000" />
+    </bean>
+    <bean id="userAddr" class="org.springframework.remoting.caucho.HessianProxyFactoryBean">
+        <property name="serviceUrl" value="${user_api_url}/hessian/addrService" />
+        <property name="serviceInterface" value="com.sfbest.account.api.addr.AddrService" />
+        <property name="readTimeout" value="5000" />
+    </bean>
+    <bean id="userSms" class="org.springframework.remoting.caucho.HessianProxyFactoryBean">
+        <property name="serviceUrl" value="${user_api_url}/hessian/smsService" />
+        <property name="serviceInterface" value="com.sfbest.account.api.sms.SmsService" />
+        <property name="readTimeout" value="5000" />
+    </bean>
 </beans>

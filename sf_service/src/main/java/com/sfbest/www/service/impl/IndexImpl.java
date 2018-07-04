@@ -2,13 +2,12 @@ package com.sfbest.www.service.impl;
 
 import com.alibaba.fastjson.JSON;
 import com.caucho.hessian.server.HessianServlet;
-import com.sf.search.remote.ArticleHessianSearcher;
+import com.sfbest.www.domain.dao.UserDao;
 import com.sfbest.www.domain.entity.User;
 import com.sfbest.www.domain.service.HessianService;
-import com.sfbest.www.service.impl.service.ArticleSearchService;
 import com.sfbest.www.service.impl.service.CommentService;
-import com.sfbest.www.service.impl.service.SearchService;
-import com.sfbest.www.service.impl.service.UserService;
+import com.sfbest.www.service.impl.service.SmsApiService;
+import com.sfbest.www.service.impl.service.UserApiService;
 import com.sfbest.www.service.util.RedisUtil;
 import org.springframework.stereotype.Service;
 
@@ -22,32 +21,20 @@ import java.util.Map;
 public class IndexImpl extends HessianServlet implements HessianService {
 
     @Resource
-    public UserService userService;
+    public UserApiService userService;
     @Resource
     public RedisUtil redisUtil;
-
     @Resource
-    CommentService commentService;
+    public UserDao userDao;
+    @Resource
+    SmsApiService smsApiService;
 
     @Override
     public String sayHello(String name) {
-
-        Map map0 = new HashMap();
-        map0.put("name","productId");
-        map0.put("value",202008);
-        Map map1 = new HashMap();
-        map1.put("name","selected");
-        map1.put("value",0);
-
-        ArrayList search = new ArrayList();
-        search.add(map0);
-        search.add(map1);
-
         Map cond = new HashMap();
-        cond.put("page",0);
-        cond.put("pageSize",3);
-        cond.put("searchConditionList",search);
-        String jsonStr = JSON.toJSONString(commentService.getCommentList(cond));
+        cond.put("mobile","13415679896");
+        cond.put("smsCode","557525");
+        String jsonStr = JSON.toJSONString(smsApiService.checkCode(cond));
         return "RET:" + jsonStr;
     }
     @Override
@@ -66,7 +53,7 @@ public class IndexImpl extends HessianServlet implements HessianService {
     public String getUserByPage(String pageInfo) {
 
         Map pageMap = (Map)JSON.parse(pageInfo);
-        List<User> userList = userService.getUser(pageMap);
+        List<User> userList = userDao.getUserPage(pageMap);
         String jsonStr = JSON.toJSONString(userList);
         String ret = redisUtil.get("Jtest");
 
