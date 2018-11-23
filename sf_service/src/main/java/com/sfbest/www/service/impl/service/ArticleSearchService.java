@@ -4,7 +4,7 @@ import com.alibaba.fastjson.JSON;
 import com.sfbest.www.service.util.LogUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import com.sf.search.remote.ArticleHessianSearcher;
+import com.remote.ArticleHessianSearcher;
 
 import java.net.URLDecoder;
 import java.util.Map;
@@ -51,26 +51,6 @@ public class ArticleSearchService {
                 return mapType;
             }else{
                 throw new Exception("Not exists key:suggestion [searchCount]");
-            }
-        }catch (Exception e){
-            LogUtil.getLogger(LogUtil.LoggerName.HESSIAN).error(e.getMessage());
-            return null;
-        }
-    }
-    /**
-     * 获取关联关键词
-     * @param param {
-     * q    string  关键词
-     * }
-     */
-    public Object getSuggest(Map param){
-        try{
-            String retStr = URLDecoder.decode(articleSearcher.suggest(JSON.toJSONString(param)),"UTF-8");
-            Map mapType = JSON.parseObject(retStr,Map.class);
-            if(mapType.containsKey("suggestion")){
-                return mapType;
-            }else{
-                throw new Exception("Not exists key:suggestion [suggest]");
             }
         }catch (Exception e){
             LogUtil.getLogger(LogUtil.LoggerName.HESSIAN).error(e.getMessage());

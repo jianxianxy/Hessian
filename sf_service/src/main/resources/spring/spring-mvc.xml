@@ -51,42 +51,11 @@
     </bean>
     <bean name="indexImpl" class="com.sfbest.www.service.impl.IndexImpl" />
 
-    <!-- search服务 -->
-    <bean id="searcher" class="org.springframework.remoting.caucho.HessianProxyFactoryBean">
-        <property name="serviceUrl" value="${web_search_url}/search/remoteSearcher.hessian" />
-        <property name="serviceInterface" value="com.sf.search.remote.HessianSearcher" />
-        <property name="readTimeout" value="5000" />
-    </bean>
+    <!-- 文章服务 -->
     <bean id="articleSearcher" class="org.springframework.remoting.caucho.HessianProxyFactoryBean">
         <property name="serviceUrl" value="${web_search_url}/search/articleRemoteSearcher.hessian" />
-        <property name="serviceInterface" value="com.sf.search.remote.ArticleHessianSearcher" />
+        <property name="serviceInterface" value="com.remote.ArticleHessianSearcher" />
         <property name="readTimeout" value="5000" />
     </bean>
-    <!-- 商品评论服务 -->
-    <bean id="commentPc" class="org.springframework.remoting.caucho.HessianProxyFactoryBean">
-        <property name="serviceUrl" value="${comment_url}/hessian/commentsForPcService" />
-        <property name="serviceInterface" value="com.sfbest.account.comment.api.CommentsForPcService" />
-        <property name="readTimeout" value="5000" />
-    </bean>
-    <bean id="commentProduct" class="org.springframework.remoting.caucho.HessianProxyFactoryBean">
-        <property name="serviceUrl" value="${comment_url}/hessian/commentsForProductService" />
-        <property name="serviceInterface" value="com.sfbest.account.comment.api.CommentsForProductService" />
-        <property name="readTimeout" value="5000" />
-    </bean>
-    <!-- 用户信息 -->
-    <bean id="userApi" class="org.springframework.remoting.caucho.HessianProxyFactoryBean">
-        <property name="serviceUrl" value="${user_api_url}/hessian/userService" />
-        <property name="serviceInterface" value="com.sfbest.account.api.user.UserService" />
-        <property name="readTimeout" value="5000" />
-    </bean>
-    <bean id="userAddr" class="org.springframework.remoting.caucho.HessianProxyFactoryBean">
-        <property name="serviceUrl" value="${user_api_url}/hessian/addrService" />
-        <property name="serviceInterface" value="com.sfbest.account.api.addr.AddrService" />
-        <property name="readTimeout" value="5000" />
-    </bean>
-    <bean id="userSms" class="org.springframework.remoting.caucho.HessianProxyFactoryBean">
-        <property name="serviceUrl" value="${user_api_url}/hessian/smsService" />
-        <property name="serviceInterface" value="com.sfbest.account.api.sms.SmsService" />
-        <property name="readTimeout" value="5000" />
-    </bean>
+
 </beans>

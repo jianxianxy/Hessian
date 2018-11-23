@@ -154,26 +154,13 @@
         </dependency>
         <!-- redis cache related.....end -->
 
-        <!-- 商品、文章搜索 -->
-        <dependency>
-            <groupId>com.sfbest.basic-service.search</groupId>
+        <!-- 文章 -->
+        <!--<dependency>
+            <groupId>com.service.articleHessian</groupId>
             <artifactId>web-search-client</artifactId>
             <version>1.1.178.feature-solr664</version>
-        </dependency>
+        </dependency>-->
 
-        <!-- 商品评论 -->
-        <dependency>
-            <groupId>com.sfbest.basic-service.comment</groupId>
-            <artifactId>comment-service-client</artifactId>
-            <version>1.0.52.release-V-20180612-P</version>
-        </dependency>
-
-        <!-- 用户信息 -->
-        <dependency>
-            <groupId>com.sfbest.basic-service.account</groupId>
-            <artifactId>account-api</artifactId>
-            <version>1.1.626.release-V-20180626</version>
-        </dependency>
     </dependencies>
 
     <build>
